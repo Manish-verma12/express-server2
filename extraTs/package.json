@@ -1,0 +1,40 @@
+{
+  "name": "express-server2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
+    "nodemon": "^2.0.12",
+    "tsc-watch": "^4.5.0",
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+
+    "start": "bael-node index.js",
+
+    "start:extra": "babel-node extra",
+
+    "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
+
+    "nodemon": "nodemon ./dist/index.js",
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "lint": "./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --exclude 'node_modules/**/*.{j,t}s'",
+
+    "lint:fix": "npm run lint --fix"
+
+  },
+ 
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manish-verma12/express-server2/issues"
+  },
+  "homepage": "https://github.com/Manish-verma12/express-server2#readme"
+}
