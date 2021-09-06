@@ -7,8 +7,8 @@ for(let i=1; i<=5 ; i++){
   }
   console.log();
 }
-for(let i= 5; i>=0 ; i--){
-    for(let j=1 ; j<=5-i ; j++){
+for(let i= 4; i>=0 ; i--){
+    for(let j=1 ; j<=4-i ; j++){
       process.stdout.write(" ");
     }
     for(k=1 ; k<=i ; k++){
