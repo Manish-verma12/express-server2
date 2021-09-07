@@ -1,4 +1,5 @@
-for(let i=1; i<=5 ; i++){
+export function printEquilateralTriangle() {
+    for(let i=1; i<=5 ; i++){
     for(let j=1; j+i <= 5; j++){
         process.stdout.write(" ");
     }
@@ -7,5 +8,4 @@ for(let i=1; i<=5 ; i++){
     }
     console.log();
 }
-
-
+}
