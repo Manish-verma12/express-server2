@@ -1,7 +1,7 @@
-
+import { validateEmail } from "./helpers";
 function validateEmail(email) {
 
-  const regexEmail = /@successive.tech/;
+  var regexEmail = /@successive.tech/;
   var flag = regexEmail.test(email);
   if (flag) {
     return true;
@@ -14,7 +14,7 @@ function validateEmail(email) {
 function validateUser(users) {
   validEmail = [];
   invalidEmail = [];
-  var validCount;
+  
 
 
   users.forEach(e1 => {
@@ -46,13 +46,19 @@ function validateUser(users) {
   validEmail.forEach(element => {
     console.log(element);
   });
+  
 
 
   console.log("invalid email are :-");
   invalidEmail.forEach(element => {
-    console.log(element);
+  console.log(element);
   });
 
+
+ console.log("No. of valid emails are - ");
+ console.log(validEmail.length);
+ console.log("No. of invalid emails are - ");
+ console.log(invalidEmail.length);
 }
 
 
@@ -75,7 +81,7 @@ const users = [
   },
   {
     traineeEmail: "manish.verma@successive.tech",
-    reviewerEmail: "ajay.choudhary.successive.tech"
+    reviewerEmail: "ajay.choudhary@successive.tech"
   },
   {
     traineeEmail: "manish.verma@successive.tech",
@@ -98,3 +104,5 @@ const users = [
 
 
 validateUser(users);
+
+
