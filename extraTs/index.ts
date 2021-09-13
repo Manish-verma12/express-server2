@@ -3,6 +3,10 @@
 printDiamondPattern();
 */
 
-import { printEquilateralTriangle } from "./patterns";
+//import { printEquilateralTriangle } from "./patterns";
 
-printEquilateralTriangle();
+//printEquilateralTriangle();
+
+
+let message: string = 'Hello, World! 12345' ;
+console.log(message);
