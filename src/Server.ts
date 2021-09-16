@@ -2,58 +2,46 @@ import * as bodyParser from "body-parser";
 import  notFoundRoute  from './libs/routes/notFoundRoute';
 import * as express from 'express';
 import errorHandler from "./libs/routes/errorHandler";
+import routes from "./router";
 
 
-export default class Server{
+ export default class Server{
 
-app: express.Express;
+ private app: express.Express;
 
  constructor(private config){
      this.app = express();
  }
 
-middleware1(req, res ,next){
-   console.log('middleware1');
-   next();
-}
-middleware2(req, res ,next){
-  console.log('middleware2');
-  next();
-}
-
-setupRoutes(){
-  this.app.get('/health-check', this.middleware1 ,this.middleware2, function (req, res ,next) {
-      console.log('./health-check api called');
-    //  res.status(200).send('I am OK')
-    res.status(200).json({status:200,message: "i am ok running health api", error: "not found",  timestamp: new Date()});
-    
-  })
-
-  this.app.post('/data', function (req, res ,next) {
-    console.log('post request', req.body);
-    res.status(200).send('I am OK')
-    res.error()
-  })
-
-this.app.use(notFoundRoute);
-this.app.use(errorHandler);
-
-}
-initBodyParser(){
+ private initBodyParser(){
   this.app.use(bodyParser.urlencoded({ extended: false }))
   this.app.use(bodyParser.json())
 }
 
-    bootstrap(){
+setupRoutes(){
+    const {app} = this;
+    
+    app.use('/health-check',(req, res) => {
+      res.send('I am ok');
+    });
+    app.use("/api", routes);
+    app.use(notFoundRoute);
+    app.use(errorHandler);
+}
+
+
+  public bootstrap(){
     this.initBodyParser;
     this.setupRoutes();
     return this.app;
 }
  
- run(){
-  this.app.listen(9000, ()=>{
-    console.log('app started successfully'); 
-  })
+ public run(){
+  const {port, env } = this.config;
+  this.app.listen(port, () =>  {
+  //  const message ='||  app is running at port' '${port}'  in '${env}'  mode ||;
+    console.log(message);
+  });
     return this;
  }
 
