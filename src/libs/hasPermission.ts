@@ -1,7 +1,7 @@
-import {permission} from './constants';
+import {permissions} from './constants';
 
-export default function hasPermission(module: string,role,string, type: string): Boolean {
-    const permission = Permissions[module]
+export default function hasPermission(module: string,role: string, type: string): Boolean {
+    const permission = permissions[module]
     if(!permission || !permission[type]){
     console.log(`\n${role} do not have permission to ${type} permission for the module ${module}`)
     return false;   

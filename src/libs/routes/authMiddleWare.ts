@@ -12,7 +12,7 @@ import config from '../../config/configuration';
     if (!token){
         next({error: 'Unauthorized', message: 'Token not found', status:403});
     }
-} 
+ 
 
 const {secret} = config;
 //console.log(secret);
@@ -38,4 +38,5 @@ if(!hasPermission(module,user.role, permissionType)){
 req.user = user;
 next();
 }
+
 //export default authMiddleware;

@@ -1,4 +1,4 @@
- interface IConfig{
+export interface IConfig{
    port: number;
    env : string;
    secret: string;

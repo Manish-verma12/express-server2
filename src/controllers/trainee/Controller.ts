@@ -14,7 +14,7 @@ import config from "../../config/configuration";
             }
         ]
 
-        res.status(200).send({ message: 'successfully fetched trainees', data: req.user, status: 'success' });
+        res.status(200).send({ message: 'successfully fetched trainees', data: data, status: 'success' });
     }
 
     create(req: Request, res: Response, next: NextFunction) {
@@ -51,7 +51,7 @@ import config from "../../config/configuration";
 }
 
     createToken(req: Request, res: Response, next: NextFunction){
-
+       console.log("hyy");
        const token = jwt.sign(req.body, config.secret,{expiresIn: "12hr"});
        console.log(token);
         res.status(200).send({ message: 'Token successfully created', data: {token}, status: 'success' });

@@ -21,6 +21,7 @@ export default class Server {
   }
 
   setupRoutes() {
+    console.log('setUpRoutes INIT');
     const { app } = this;
     app.use(morgan('combined'))
 
@@ -32,7 +33,11 @@ export default class Server {
       res.send('I am ok');
     });
 
-    app.use("/api", routes);
+    app.use("/api", (req, res, next) => {
+      console.log('..../api...route');
+      return next();
+    },
+    routes);
     
     app.use(notFoundRoute);
     app.use(errorHandler);
