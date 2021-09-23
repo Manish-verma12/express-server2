@@ -33,7 +33,7 @@
     "lint": "./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --exclude 'node_modules/**/*.{j,t}s'",
     "lint:fix": "npm run lint --fix",
     "start:src": "tsc-watch --project . --onSuccess \"npm run nodemon:src\"",
-    "nodemon:src": "nodemon ./dist/src/index.js"
+    "nodemon:src": "nodemon ./dist/index.js"
   },
   "repository": {
     "type": "git",
