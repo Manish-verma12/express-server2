@@ -1,6 +1,7 @@
 import * as bodyParser from "body-parser";
 import notFoundRoute from './libs/routes/notFoundRoute';
 import * as express from 'express';
+import Database from "./libs/Database";
 import * as morgan from 'morgan';
 import errorHandler from "./libs/routes/errorHandler";
 import routes from "./router";
@@ -37,8 +38,8 @@ export default class Server {
       console.log('..../api...route');
       return next();
     },
-    routes);
-    
+      routes);
+
     app.use(notFoundRoute);
     app.use(errorHandler);
   }
@@ -50,13 +51,20 @@ export default class Server {
     return this.app;
   }
 
-  public run() {
-    const { port, env } = this.config;
-    this.app.listen(port, () => {
-      const message = `||  app is running at port' '${port}'  in '${env}'  mode ||`;
-      console.log(message);
-    });
-    return this;
-  }
+  public async run() {
+    const { port, env, mongoURI } = this.config;
+    try {
+      await Database.open(mongoURI)
+      
+        this.app.listen(port, () => {
+          const message = `||  app is running at port' '${port}'  in '${env}'  mode ||`;
+          console.log(message);
+        });
+      } catch (error) {
+        console.log("inside catch", error);
+      }
+
+      return this;
+    }
 
 }

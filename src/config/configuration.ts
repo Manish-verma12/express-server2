@@ -8,6 +8,7 @@ import {config} from 'dotenv';
    env: process.env.NODE_ENV,
    port : parseInt(process.env.PORT),
    secret: process.env.TOKEN_SECRET,
+   mongoURI: process.env.MONGO_URL,
   }) as IConfig;
   export default configuration;
   
