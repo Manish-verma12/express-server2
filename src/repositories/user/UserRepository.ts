@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
 import { userModel } from './UserModel';
 import IUserModel from './IUserModel';
-import user from 'src/controllers/user ';
+import VersionableRepository from '../versionable/VersionableRepository';
+// import user from 'src/controllers/user ';
 
 
 export default class UserRepository{
