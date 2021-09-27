@@ -1,6 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import hasPermission from '../hasPermission';
 import config from '../../config/configuration';
+import UserRepository from 'src/repositories/user/UserRepository';
 
 
  export default (module, permissionType) => async (req, res, next) => {
@@ -29,6 +30,12 @@ console.log('user is', user);
 
 if(!user){
     next({error: 'Unauthorized', message: 'user not authorized', status: 403 });
+}
+
+const userData = await UserRepository.findOne({_id: user.id});
+
+if(!userData){
+    next({error: 'Unauthorized', message: 'Permission Denied', status: 403});
 }
 
 if(!hasPermission(module,user.role, permissionType)){
