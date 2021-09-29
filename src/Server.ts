@@ -4,13 +4,14 @@ import * as express from 'express';
 import Database from "./libs/Database";
 import * as morgan from 'morgan';
 import errorHandler from "./libs/routes/errorHandler";
+import Swagger from './libs/Swagger';
 import routes from "./router";
 
 export default class Server {
 
   private app: express.Express;
 
-  constructor(private config) {
+  constructor(private config: IConfig) {
     this.app = express();
   }
 
@@ -67,4 +68,18 @@ export default class Server {
       return this;
     }
 
+  private initSwagger(){
+    const { SwaggerDefinition, SwaggerUrl} = this.config;
+
+    const swaggerSetup = new Swagger();
+
+    this.app.use(`${swaggerUrl}.json`, swaggerSetup.getRouter){
+      swaggerDefination,
+    }));
+
+    const{ serve, setup} = swaggerSetup.getUI(swaggerUrl);
+    
+    this.app.use(swaggerUrl, serve, setup);
+  }
+    
 }
